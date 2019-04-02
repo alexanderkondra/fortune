@@ -1,22 +1,25 @@
 $(document).ready(function(){
-  $("form#stress_test").submit(function(event){
+  $("form#fortune-teller").submit(function(event){
     event.preventDefault();
     $(".response").hide();
-    var sym = $("input:checkbox[name=stressS]:checked").length;
-    var health = $("input:checkbox[name=stressH]:checked").length;
-    var manage = $("input:checkbox[name=stressM]:checked").length;
+    var luck =  $("input:checkbox[name=lucky]:checked").length;
+    luck = parseInt(luck) - parseInt($("input:checkbox[name=unlucky]:checked").length);
+
+
     $('#transportation_survey').hide();
-    if(sym + health >= 5 && manage >= 5){
-      $("#managed").show();
-    }else if(sym + health >=5){
-      $("#stressed").show();
+
+    if(luck <-1){
+      $("#bluck").show();
+    }else if(luck < 1){
+      $("#nluck").show();
     }else{
-      $("#notstressed").show();
+      $("#gluck").show();
     }
 
   });
 });
 
+//-3 -2 | -1 0 | 1 2 3 4
 
 var factorial = function (x){
   if(x <= 1){
